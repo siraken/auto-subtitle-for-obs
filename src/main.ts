@@ -33,6 +33,7 @@ const settingsElement = {
 };
 
 // Properties
+let language = "ja-JP";
 let fontSize: number = 1;
 
 // Flags
@@ -69,11 +70,10 @@ function setTextWidth(width: string): void {
 const SpeechRecognition =
   (window as any).speechRecognition || (window as any).webkitSpeechRecognition;
 
-const recognition = new SpeechRecognition();
-
-recognition.lang = "ja-JP";
-
 function main(): void {
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = language;
   recognition.interimResults = true;
   recognition.continuous = true;
 
@@ -116,8 +116,6 @@ function main(): void {
 
 startButton.addEventListener("click", () => {
   main();
-  startButton.disabled = true;
-  settingsElement.language.disabled = true;
   resultElement.innerHTML = "";
 });
 
@@ -144,7 +142,7 @@ settingsElement.textWidth.addEventListener("input", (e: any) => {
 });
 
 settingsElement.language.addEventListener("change", (e: any) => {
-  recognition.lang = e.target.value;
+  language = e.target.value;
 });
 
 window.addEventListener("keydown", (e: any) => {
