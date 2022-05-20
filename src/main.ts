@@ -8,6 +8,9 @@ const settingsElement = {
     fontSize: document.getElementById(
       "control__settings--font-size"
     ) as HTMLSpanElement,
+    textWidth: document.getElementById(
+      "control__settings--text-width"
+    ) as HTMLSpanElement,
   },
   fontSizeButtons: document.querySelectorAll(
     ".control__settings--font-size-button"
@@ -22,8 +25,11 @@ const settingsElement = {
     "control__settings--text-style"
   ) as HTMLSelectElement,
   textWidth: document.getElementById(
-    "control__settings--text-width"
+    "control__settings--text-width-input"
   ) as HTMLInputElement,
+  language: document.getElementById(
+    "control__settings--language"
+  ) as HTMLSelectElement,
 };
 
 // Properties
@@ -57,16 +63,17 @@ function setTextStyle(style: string): void {
 
 function setTextWidth(width: string): void {
   resultElement.style.width = `${width}px`;
+  settingsElement.label.textWidth.innerHTML = width;
 }
 
+const SpeechRecognition =
+  (window as any).speechRecognition || (window as any).webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+
+recognition.lang = "ja-JP";
+
 function main(): void {
-  const SpeechRecognition =
-    (window as any).speechRecognition ||
-    (window as any).webkitSpeechRecognition;
-
-  const recognition = new SpeechRecognition();
-
-  recognition.lang = "ja-JP";
   recognition.interimResults = true;
   recognition.continuous = true;
 
@@ -110,6 +117,7 @@ function main(): void {
 startButton.addEventListener("click", () => {
   main();
   startButton.disabled = true;
+  settingsElement.language.disabled = true;
   resultElement.innerHTML = "";
 });
 
@@ -131,6 +139,26 @@ settingsElement.textStyle.addEventListener("change", (e: any) => {
   setTextStyle(e.target.value);
 });
 
-settingsElement.textWidth.addEventListener("change", (e: any) => {
+settingsElement.textWidth.addEventListener("input", (e: any) => {
   setTextWidth(e.target.value);
+});
+
+settingsElement.language.addEventListener("change", (e: any) => {
+  recognition.lang = e.target.value;
+});
+
+window.addEventListener("keydown", (e: any) => {
+  if (e.key === "f") {
+    viewElement.style.height = "100vh";
+  }
+  if (e.key === "Escape") {
+    viewElement.style.height = "";
+  }
+  if (e.key === "c") {
+    if (viewElement.style.visibility === "hidden") {
+      viewElement.style.visibility = "visible";
+    } else {
+      viewElement.style.visibility = "hidden";
+    }
+  }
 });

@@ -14,7 +14,7 @@
       <div id="control__settings">
         <div>
           <label
-            >Font size(<span id="control__settings--font-size">1</span
+            >Font size(<span id="control__settings--font-size"></span
             >rem):</label
           >
           <button
@@ -75,8 +75,36 @@
           </select>
         </div>
         <div>
-          <label>Text width(px):</label>
-          <input id="control__settings--text-width" type="number" value="250" />
+          <label
+            >Text width(<span id="control__settings--text-width"></span
+            >px):</label
+          >
+          <input
+            id="control__settings--text-width-input"
+            type="range"
+            min="0"
+            max="1000"
+            value="250"
+          />
+        </div>
+        <div>
+          <label>Language:</label>
+          <select id="control__settings--language">
+            <option value="id-ID">Bahasa Indonesia</option>
+            <option value="en-US">English (US)</option>
+            <option value="es-ES">Español</option>
+            <option value="de-DE">Deutsch</option>
+            <option value="fil-PH">Filipino</option>
+            <option value="fr-FR">Français</option>
+            <option value="it-IT">Italiano</option>
+            <option value="nb-NO">Norsk bokmål</option>
+            <option value="ru-RU">Pусский</option>
+            <option value="uk-UA">Українська</option>
+            <option value="ko-KR">한국어</option>
+            <option value="cmn-Hans-CN">普通话 (中国大陆)</option>
+            <option value="cmn-Hant-TW">中文 (台灣)</option>
+            <option value="ja-JP" selected>日本語</option>
+          </select>
         </div>
       </div>
     </section>
