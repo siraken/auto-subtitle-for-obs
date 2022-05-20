@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.scss" />
+    <title>SpeechRecognition</title>
+  </head>
+  <body>
+    <section id="control">
+      <h1 id="status">SpeechRecognition</h1>
+      <button type="button" id="start">Start</button>
+      <div id="control__settings">
+        <div>
+          <label
+            >Font size(<span id="control__settings--font-size">1</span
+            >rem):</label
+          >
+          <button
+            type="button"
+            class="control__settings--font-size-button"
+            data-size="-1"
+          >
+            -1
+          </button>
+          <button
+            type="button"
+            class="control__settings--font-size-button"
+            data-size="-0.5"
+          >
+            -0.5
+          </button>
+          <button
+            type="button"
+            class="control__settings--font-size-button"
+            data-size="0"
+          >
+            Base
+          </button>
+          <button
+            type="button"
+            class="control__settings--font-size-button"
+            data-size="0.5"
+          >
+            +0.5
+          </button>
+          <button
+            type="button"
+            class="control__settings--font-size-button"
+            data-size="1"
+          >
+            +1
+          </button>
+        </div>
+        <div>
+          <label>Font weight:</label>
+          <select id="control__settings--font-weight">
+            <option value="normal">Default</option>
+            <option value="bold">Bold</option>
+          </select>
+        </div>
+        <div>
+          <label>Font style:</label>
+          <select id="control__settings--font-style">
+            <option value="normal">Default</option>
+            <option value="italic">Italic</option>
+          </select>
+        </div>
+        <div>
+          <label>Text style:</label>
+          <select id="control__settings--text-style">
+            <option value="default">Default</option>
+            <option value="bubble">Bubble</option>
+          </select>
+        </div>
+        <div>
+          <label>Text width(px):</label>
+          <input id="control__settings--text-width" type="number" value="250" />
+        </div>
+      </div>
+    </section>
+    <section id="view">
+      <div
+        id="result-text"
+        class="message__style--default"
+        style="width: 250px"
+      >
+        Press "Start" button to start...
+      </div>
+    </section>
+    <script src="/src/main.ts" type="module"></script>
+  </body>
+</html>
