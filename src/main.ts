@@ -27,6 +27,12 @@ const settingsElement = {
   textWidth: document.getElementById(
     "control__settings--text-width-input"
   ) as HTMLInputElement,
+  textColor: document.getElementById(
+    "control__settings--text-color"
+  ) as HTMLInputElement,
+  bgColor: document.getElementById(
+    "control__settings--background-color"
+  ) as HTMLInputElement,
   language: document.getElementById(
     "control__settings--language"
   ) as HTMLSelectElement,
@@ -65,6 +71,14 @@ function setTextStyle(style: string): void {
 function setTextWidth(width: string): void {
   resultElement.style.width = `${width}px`;
   settingsElement.label.textWidth.innerHTML = width;
+}
+
+function setTextColor(color: string): void {
+  resultElement.style.color = color;
+}
+
+function setBackgroundColor(color: string): void {
+  viewElement.style.backgroundColor = color;
 }
 
 const SpeechRecognition =
@@ -139,6 +153,14 @@ settingsElement.textStyle.addEventListener("change", (e: any) => {
 
 settingsElement.textWidth.addEventListener("input", (e: any) => {
   setTextWidth(e.target.value);
+});
+
+settingsElement.textColor.addEventListener("input", (e: any) => {
+  setTextColor(e.target.value);
+});
+
+settingsElement.bgColor.addEventListener("input", (e: any) => {
+  setBackgroundColor(e.target.value);
 });
 
 settingsElement.language.addEventListener("change", (e: any) => {
